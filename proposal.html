@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proposal</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+  </head>
+  <body>
+    <div class="container">
+      <button class="back-btn" onclick="goBack()" style="margin-left: 50px">Go Back</button>
+      <h1 class="ask">Will you Marry me?</h1>
+      <div class="gif_container">
+        <img src="./images/proposal.png" style="height: 250px" />
+      </div>
+      <div class="options">
+        <button id="yesButton" class="btn" style="border-radius: 10px" onclick="nextPage()">Yes</button>
+        <button id="noButton" class="btn" style="border-radius: 10px" onclick="angryPage()">No</button>
+      </div>
+      <script>
+        function nextPage() {
+          window.location.href = "happyending.html";
+        }
+        function angryPage() {
+          window.location.href = "angry.html";
+        }
+        function goBack() {
+          window.history.back();
+        }
+      </script>
+    </div>
+  </body>
+</html>

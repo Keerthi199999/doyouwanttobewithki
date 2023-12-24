@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yay/Nah</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="ask">Do you really really really love me?</h1>
+      <div class="gif_container">
+        <img src="./images/thinking.png" alt="vinuchlo" height="250px" />
+      </div>
+      <br />
+      <br />
+      <div class="options">
+        <button id="yesButton" class="btn" style="border-radius: 10px" onclick="nextPage()">Yes</button>
+        <button id="noButton" class="btn" style="border-radius: 10px" onclick="moveButton()">No</button>
+      </div>
+      <script>
+        function nextPage() {
+          window.location.href = "haapyhappy.html";
+        }
+
+        function nextSadPage() {
+          window.location.href = "sad.html";
+        }
+
+        var clickCount = 0;
+
+        function moveButton() {
+          clickCount++;
+
+          var messages = ["No", "No please", "Seriously, no", "Okay, fine, go ahead"];
+
+          if (clickCount < 5) {
+            var button = document.getElementById("noButton");
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+
+            var x = Math.random() * maxX;
+            var y = Math.random() * maxY;
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+
+            displayMessage(messages[clickCount - 1], x, y);
+          } else {
+            window.location.href = "sad.html";
+          }
+        }
+
+        function displayMessage(message, x, y) {
+          var messageElement = document.getElementById("message");
+
+          if (!messageElement) {
+            // Create the message element if it doesn't exist
+            messageElement = document.createElement("div");
+            messageElement.id = "message";
+            document.body.appendChild(messageElement);
+
+            // Set styling for the message element
+            messageElement.style.position = "absolute";
+            messageElement.style.backgroundColor = "#e9cbca";
+            messageElement.style.padding = "5px";
+            messageElement.style.borderRadius = "5px";
+          }
+
+          // Set the message and position it near the button
+          messageElement.innerText = message;
+          messageElement.style.left = `${x}px`;
+          messageElement.style.top = `${y - 20}px`; // Adjust the offset as needed
+        }
+      </script>
+    </div>
+  </body>
+</html>
